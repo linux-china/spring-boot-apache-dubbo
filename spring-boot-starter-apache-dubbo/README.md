@@ -77,12 +77,12 @@ Spring Boot Start Apache Dubbo
 
        <?xml version="1.0" encoding="UTF-8"?>
        
-       <beans xmlns="http://www.springframework.org/schema/beans"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-           http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-       
+      <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+             xmlns="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+             http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+             
            <dubbo:reference id="uicTemplate" interface="org.mvnsearch.uic.UicTemplate" timeout="1000000" />
        
        </beans>
@@ -100,7 +100,7 @@ Spring Boot Start Apache Dubbo
 
 ### 其他
 
-* Dubbo Endpoint: spring-boot-starter-dubbo提供了dubbo的enpoint,通过该url可以快速了解Dubbo的运行信息
+* Dubbo Endpoint: spring-boot-starter-dubbo提供了dubbo的endpoint,通过该url可以快速了解Dubbo的运行信息
 * health indicator: 对远程服务进行echo service调用进行health检查,通过 /health 进行查看
 * dubbo call direct: [DubboDirectCallFactory.java](src/main/java/org/mvnsearch/spring/boot/dubbo/DubboDirectCallFactory.java)
 
