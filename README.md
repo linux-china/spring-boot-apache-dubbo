@@ -65,6 +65,12 @@ restart.exclude.target-classes=/target/classes/
 spring.devtools.livereload.enabled=false
 ```
 
+# Kotlin support?
+
+```
+dubbo<UserService>("1.0.0");
+dubbo<UserService>("127.0.0",20800,"1.0.0")
+```
 # Todo
 
 * DubboConsumerBuilder: 快速构建Dubbo Consumer
