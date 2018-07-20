@@ -1,0 +1,9 @@
+###@see org.mvnsearch.PortalController.index
+### invoke service from client
+GET http://localhost:2080/
+
+###@see org.mvnsearch.spring.boot.dubbo.DubboEndpoint.invoke
+### get dubbo service metrics
+GET http://localhost:20882/actuator/dubbo
+
+###
