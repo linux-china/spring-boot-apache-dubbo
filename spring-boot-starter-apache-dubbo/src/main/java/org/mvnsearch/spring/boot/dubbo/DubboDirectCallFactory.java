@@ -25,8 +25,19 @@ public class DubboDirectCallFactory {
      * @return remote service object
      */
     public static <T> T dubbo(String host, int port, Class<T> clazz) {
+        return dubbo(host, port, clazz, "0.0.0");
+    }
+
+    /**
+     * 返回直连dubbo服务
+     *
+     * @param clazz dubbo service interface
+     * @return remote service object
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T dubbo(String host, int port, Class<T> clazz, String version) {
         // 直连dubbo服务的URL
-        String url = "dubbo://" + host + ":" + port + "/" + clazz.getCanonicalName();
+        String url = "dubbo://" + host + ":" + port + "/" + clazz.getCanonicalName() + "?version=" + version;
         if (!stubs.containsKey(url)) {
             ReferenceConfig<T> reference = new ReferenceConfig<T>();
             reference.setApplication(application);
@@ -39,6 +50,5 @@ public class DubboDirectCallFactory {
             stubs.put(url, stub);
         }
         return (T) stubs.get(url);
-
     }
 }
