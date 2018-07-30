@@ -6,4 +6,7 @@ GET http://localhost:2080/
 ### get dubbo service metrics
 GET http://localhost:20882/actuator/dubbo
 
+### prometheus metrics format
+GET http://localhost:20882/actuator/prometheus
+
 ###
