@@ -6,6 +6,13 @@ Spring Boot With Apache Dubbo
 Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http://dubbo.incubator.apache.org/#!/?lang=zh-cn
 
 
+# Spring Boot Starter特性
+
+* Dubbo Service发布： https://github.com/linux-china/spring-boot-apache-dubbo/blob/master/spring-boot-dubbo-server/src/main/java/org/mvnsearch/uic/UicTemplateImpl.java
+* Dubbo Service消费: https://github.com/linux-china/spring-boot-apache-dubbo/blob/master/spring-boot-starter-demo-uic/src/main/java/org/mvnsearch/uic/boot/UicDemoAutoconfiguration.java
+* Metrics支持: 目前主要是counter和timer: 请参考 http://micrometer.io/
+* Endpoint支持:  /actuator/dubbo， 输出Dubbo相关的配置
+
 # 注册中心-Registry
 目前主要是支持Redis、ZooKeeper和Consul这三个注册中心，主要是这两个服务非常普遍，同时由于Docker的流行，启动这三者个服务也非常简单。
 
@@ -75,3 +82,7 @@ dubbo<UserService>("127.0.0",20800,"1.0.0")
 
 * DubboConsumerBuilder: 快速构建Dubbo Consumer
 * zipkin: https://github.com/jessyZu/dubbo-zipkin-spring-starter
+
+# References
+
+* Hessian Chinese: https://github.com/cytle/blog/blob/master/source/_posts/Hessian-2-0%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83.md
