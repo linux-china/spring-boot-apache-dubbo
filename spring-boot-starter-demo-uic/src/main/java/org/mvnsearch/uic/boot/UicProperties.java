@@ -12,7 +12,7 @@ public class UicProperties {
     /**
      * dubbo服务版本号,默认值为空
      */
-    private String version = "";
+    private String version = "0.0.0";
     /**
      * rpc服务调用超时时间
      */
