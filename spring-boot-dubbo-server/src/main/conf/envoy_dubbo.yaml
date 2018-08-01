@@ -1,0 +1,32 @@
+static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 28888
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.dubbo_proxy
+        config:
+          stat_prefix: dubbo_incomming_stats
+          protocol_type: "Dubbo"
+          serialization_type: "Hessian2"
+      - name: envoy.tcp_proxy
+        config:
+          stat_prefix: tcp_stats
+          cluster: dubbo-service-1
+  clusters:
+  - name: dubbo-service-1
+    connect_timeout: 0.25s
+    type: STATIC
+    lb_policy: RANDOM
+    hosts:
+    - socket_address:
+        address: 30.57.181.140
+        port_value: 20880
+admin:
+  access_log_path: "/dev/null"
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
