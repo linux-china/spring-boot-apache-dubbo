@@ -19,9 +19,9 @@ static_resources:
   clusters:
   - name: dubbo_server
     connect_timeout: 0.25s
-    type: strict_dns
-    lb_policy: round_robin
+    type: STATIC
+    lb_policy: RANDOM
     hosts:
     - socket_address:
-        address: 30.57.181.112
+        address: 30.57.181.140
         port_value: 20800
