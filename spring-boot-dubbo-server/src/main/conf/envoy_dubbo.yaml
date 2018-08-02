@@ -28,5 +28,6 @@ static_resources:
     lb_policy: RANDOM
     hosts:
     - socket_address:
-        address: 30.57.181.140
+        # 10.0.2.2 for vagrant with STATIC, host.docker.internal for Docker with LOGICAL_DNS
+        address: 10.0.2.2
         port_value: 20800
