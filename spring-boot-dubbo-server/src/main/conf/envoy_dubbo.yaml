@@ -1,6 +1,12 @@
+admin:
+  access_log_path: /tmp/admin_access.log
+  address:
+    socket_address: { address: 0.0.0.0, port_value: 9901 }
+
 static_resources:
   listeners:
-  - address:
+  - name: dubbo_proxy
+    address:
       socket_address:
         address: 0.0.0.0
         port_value: 28888
@@ -13,20 +19,14 @@ static_resources:
           serialization_type: "Hessian2"
       - name: envoy.tcp_proxy
         config:
-          stat_prefix: tcp_stats
-          cluster: dubbo-service-1
+          stat_prefix: ingress_tcp
+          cluster: dubbo_server
   clusters:
-  - name: dubbo-service-1
+  - name: dubbo_server
     connect_timeout: 0.25s
     type: STATIC
     lb_policy: RANDOM
     hosts:
     - socket_address:
         address: 30.57.181.140
-        port_value: 20880
-admin:
-  access_log_path: "/dev/null"
-  address:
-    socket_address:
-      address: 0.0.0.0
-      port_value: 9901
+        port_value: 20800
