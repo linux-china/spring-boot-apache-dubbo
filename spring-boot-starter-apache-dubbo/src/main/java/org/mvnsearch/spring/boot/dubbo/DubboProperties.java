@@ -34,9 +34,9 @@ public class DubboProperties {
      */
     private String transporter = "netty";
     /**
-     * dubbo listen port, default 20800
+     * dubbo listen port, default 20880
      */
-    private Integer port = 20800;
+    private Integer port = 20880;
     /**
      * dubbo export host, useful when running in Docker
      */
