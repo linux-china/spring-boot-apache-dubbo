@@ -16,7 +16,7 @@ public @interface DubboService {
 
     String interfaceName() default "";
 
-    String version() default "";
+    String version() default "0.0.0";
 
     String group() default "";
 
