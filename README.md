@@ -14,7 +14,7 @@ Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http
 * Endpoint支持:  /actuator/dubbo， 输出Dubbo相关的配置
 
 # 注册中心-Registry
-目前主要是支持Redis、ZooKeeper和Consul这三个注册中心，主要是这两个服务非常普遍，同时由于Docker的流行，启动这三者个服务也非常简单。
+目前主要是支持Simple Registry(Java),Redis、ZooKeeper和Consul这三个注册中心，主要是这两个服务非常普遍，同时由于Docker的流行，启动这三者个服务也非常简单。
 
 ### Redis
 使用Redis注册中心，需要将在pom.xml中添加对应的redis客户端，代码如下：
@@ -52,6 +52,7 @@ Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http
 
 * 首先使用IntelliJ IDEA导入项目
 * 调用docker-compose启动对应的注册中心: docker-compose up -d
+* 启动 DubboRegistryServer
 * 启动 SpringBootDubboServerApplication
 * 启动 SpringBootDubboClientApplication
 * 打开浏览器访问 http://localhost:2080
@@ -75,8 +76,8 @@ spring.devtools.livereload.enabled=false
 # Kotlin support?
 
 ```
-dubbo<UserService>("1.0.0");
-dubbo<UserService>("127.0.0",20800,"1.0.0")
+dubbo<UserService>("0.0.0");
+dubbo<UserService>("127.0.0",20800,"0.0.0")
 ```
 # Todo
 
