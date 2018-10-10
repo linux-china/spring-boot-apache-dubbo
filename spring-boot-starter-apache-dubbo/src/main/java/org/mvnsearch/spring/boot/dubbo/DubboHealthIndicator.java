@@ -1,5 +1,6 @@
 package org.mvnsearch.spring.boot.dubbo;
 
+import org.apache.dubbo.registry.RegistryService;
 import org.apache.dubbo.rpc.service.EchoService;
 import org.mvnsearch.spring.boot.dubbo.listener.ConsumerSubscribeListener;
 import org.springframework.beans.BeansException;
@@ -25,9 +26,11 @@ public class DubboHealthIndicator extends AbstractHealthIndicator implements App
     protected void doHealthCheck(Health.Builder builder) throws Exception {
         if (!ConsumerSubscribeListener.subscribedInterfaces.isEmpty()) {
             for (Class clazz : ConsumerSubscribeListener.subscribedInterfaces) {
-                EchoService echoService = (EchoService) applicationContext.getBean(clazz);
-                echoService.$echo("Hello");
-                builder.withDetail(clazz.getCanonicalName(), true);
+                if (!clazz.equals(RegistryService.class)) {
+                    EchoService echoService = (EchoService) applicationContext.getBean(clazz);
+                    echoService.$echo("Hello");
+                    builder.withDetail(clazz.getCanonicalName(), true);
+                }
             }
         }
         if (DubboOperationEndpoint.OFFLINE) {
