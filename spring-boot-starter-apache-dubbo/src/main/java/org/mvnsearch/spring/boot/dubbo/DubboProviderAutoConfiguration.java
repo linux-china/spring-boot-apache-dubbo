@@ -89,6 +89,7 @@ public class DubboProviderAutoConfiguration implements ApplicationContextAware {
         serviceConfig.setProtocol(protocolConfig);
         serviceConfig.setRegistry(registryConfig);
         serviceConfig.setInterface(service.interfaceClass());
+        serviceConfig.setVersion(service.version());
         serviceConfig.afterPropertiesSet();
         serviceConfig.setRef(bean);
         serviceConfig.export();
