@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!-- application info configuration -->
+    <dubbo:application name="simple-registry"/>
+    <!-- service protocol configuration -->
+    <dubbo:protocol port="9090"/>
+    <!-- service configuration -->
+    <dubbo:service interface="org.apache.dubbo.registry.RegistryService" ref="registryService" registry="N/A"
+                   ondisconnect="disconnect" callbacks="1000">
+        <dubbo:method name="subscribe">
+            <dubbo:argument index="1" callback="true"/>
+        </dubbo:method>
+        <dubbo:method name="unsubscribe">
+            <dubbo:argument index="1" callback="false"/>
+        </dubbo:method>
+    </dubbo:service>
+    <!-- simple registry server implementation, register other implementation if cluster ability is a requirement-->
+    <bean id="registryService" class="org.mvnsearch.spring.boot.dubbo.registry.SimpleRegistryService"/>
+</beans>
