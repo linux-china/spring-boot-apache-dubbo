@@ -34,54 +34,56 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * AbstractRegistryService
  */
 public abstract class AbstractRegistryService implements RegistryService {
+    protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    // logger
-    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    /**
+     * registered services
+     */
+    private final ConcurrentMap<String, List<URL>> registered = new ConcurrentHashMap<>();
 
-    // registered services
-    // Map<serviceName, Map<url, queryString>>
-    private final ConcurrentMap<String, List<URL>> registered = new ConcurrentHashMap<String, List<URL>>();
+    /**
+     * subscribed services
+     */
+    private final ConcurrentMap<String, Map<String, String>> subscribed = new ConcurrentHashMap<>();
 
-    // subscribed services
-    // Map<serviceName, queryString>
-    private final ConcurrentMap<String, Map<String, String>> subscribed = new ConcurrentHashMap<String, Map<String, String>>();
+    /**
+     * notified services
+     **/
+    private final ConcurrentMap<String, List<URL>> notified = new ConcurrentHashMap<>();
 
-    // notified services
-    // Map<serviceName, Map<url, queryString>>
-    private final ConcurrentMap<String, List<URL>> notified = new ConcurrentHashMap<String, List<URL>>();
-
-    // notification listeners for the subscribed services
-    // Map<serviceName, List<notificationListener>>
-    private final ConcurrentMap<String, List<NotifyListener>> notifyListeners = new ConcurrentHashMap<String, List<NotifyListener>>();
+    /**
+     * notification listeners for the subscribed services
+     **/
+    private final ConcurrentMap<String, List<NotifyListener>> notifyListeners = new ConcurrentHashMap<>();
 
     @Override
     public void register(URL url) {
-        if (logger.isInfoEnabled()) {
-            logger.info("Register service: " + url.getServiceKey() + ",url:" + url);
+        if (log.isInfoEnabled()) {
+            log.info("Register service: " + url.getServiceKey() + ",url:" + url);
         }
         register(url.getServiceKey(), url);
     }
 
     @Override
     public void unregister(URL url) {
-        if (logger.isInfoEnabled()) {
-            logger.info("Unregister service: " + url.getServiceKey() + ",url:" + url);
+        if (log.isInfoEnabled()) {
+            log.info("Unregister service: " + url.getServiceKey() + ",url:" + url);
         }
         unregister(url.getServiceKey(), url);
     }
 
     @Override
     public void subscribe(URL url, NotifyListener listener) {
-        if (logger.isInfoEnabled()) {
-            logger.info("Subscribe service: " + url.getServiceKey() + ",url:" + url);
+        if (log.isInfoEnabled()) {
+            log.info("Subscribe service: " + url.getServiceKey() + ",url:" + url);
         }
         subscribe(url.getServiceKey(), url, listener);
     }
 
     @Override
     public void unsubscribe(URL url, NotifyListener listener) {
-        if (logger.isInfoEnabled()) {
-            logger.info("Unsubscribe service: " + url.getServiceKey() + ",url:" + url);
+        if (log.isInfoEnabled()) {
+            log.info("Unsubscribe service: " + url.getServiceKey() + ",url:" + url);
         }
         unsubscribe(url.getServiceKey(), url, listener);
     }
@@ -100,7 +102,7 @@ public abstract class AbstractRegistryService implements RegistryService {
         }
         List<URL> urls = registered.get(service);
         if (urls == null) {
-            registered.putIfAbsent(service, new CopyOnWriteArrayList<URL>());
+            registered.putIfAbsent(service, new CopyOnWriteArrayList<>());
             urls = registered.get(service);
         }
         if (!urls.contains(url)) {
@@ -190,7 +192,7 @@ public abstract class AbstractRegistryService implements RegistryService {
                 try {
                     notify(service, urls, listener);
                 } catch (Throwable t) {
-                    logger.error("Failed to notify registry event, service: " + service + ", urls: " + urls + ", cause: " + t.getMessage(), t);
+                    log.error("Failed to notify registry event, service: " + service + ", urls: " + urls + ", cause: " + t.getMessage(), t);
                 }
             }
         }

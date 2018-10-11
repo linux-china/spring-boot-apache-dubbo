@@ -17,8 +17,6 @@
 package org.mvnsearch.spring.boot.dubbo.registry;
 
 import org.apache.dubbo.common.URL;
-import org.apache.dubbo.common.logger.Logger;
-import org.apache.dubbo.common.logger.LoggerFactory;
 import org.apache.dubbo.common.utils.NetUtils;
 import org.apache.dubbo.common.utils.UrlUtils;
 import org.apache.dubbo.registry.NotifyListener;
@@ -34,10 +32,17 @@ import java.util.concurrent.ConcurrentMap;
  * Simple Registry Service
  */
 public class SimpleRegistryService extends AbstractRegistryService {
-
-    private final static Logger logger = LoggerFactory.getLogger(SimpleRegistryService.class);
-    private final ConcurrentMap<String, ConcurrentMap<String, URL>> remoteRegistered = new ConcurrentHashMap<String, ConcurrentMap<String, URL>>();
-    private final ConcurrentMap<String, ConcurrentMap<String, NotifyListener>> remoteListeners = new ConcurrentHashMap<String, ConcurrentMap<String, NotifyListener>>();
+    /**
+     * remote registered service
+     */
+    private final ConcurrentMap<String, ConcurrentMap<String, URL>> remoteRegistered = new ConcurrentHashMap<>();
+    /**
+     * remote listeners
+     */
+    private final ConcurrentMap<String, ConcurrentMap<String, NotifyListener>> remoteListeners = new ConcurrentHashMap<>();
+    /**
+     * dubbo registry servers
+     */
     private List<String> registries;
 
     @Override
@@ -67,8 +72,8 @@ public class SimpleRegistryService extends AbstractRegistryService {
     @Override
     public void subscribe(String service, URL url, NotifyListener listener) {
         String client = RpcContext.getContext().getRemoteAddressString();
-        if (logger.isInfoEnabled()) {
-            logger.info("[subscribe] service: " + service + ",client:" + client);
+        if (log.isInfoEnabled()) {
+            log.info("[subscribe] service: " + service + ",client:" + client);
         }
         List<URL> urls = getRegistered().get(service);
         if ((RegistryService.class.getName() + ":0.0.0").equals(service)
@@ -117,8 +122,8 @@ public class SimpleRegistryService extends AbstractRegistryService {
 
     public void disconnect() {
         String client = RpcContext.getContext().getRemoteAddressString();
-        if (logger.isInfoEnabled()) {
-            logger.info("Disconnected " + client);
+        if (log.isInfoEnabled()) {
+            log.info("Disconnected " + client);
         }
         ConcurrentMap<String, URL> urls = remoteRegistered.get(client);
         if (urls != null && urls.size() > 0) {
