@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author linux_china
  */
-@RestControllerEndpoint(id = "dubbo/ops")
+@RestControllerEndpoint(id = "dubboops")
 public class DubboOperationEndpoint {
     public static Boolean OFFLINE = false;
 
