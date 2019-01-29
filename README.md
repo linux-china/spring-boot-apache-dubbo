@@ -40,7 +40,7 @@ Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http
      <dependency>
          <groupId>com.101tec</groupId>
          <artifactId>zkclient</artifactId>
-         <version>0.10</version>
+         <version>0.11</version>
      </dependency>
 ```
 
