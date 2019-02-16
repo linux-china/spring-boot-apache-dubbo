@@ -6,6 +6,10 @@ build:
 registry_jib: build
    mvn -pl spring-boot-dubbo-registry jib:dockerBuild
 
+# run simple registry server
+simple_registry_server: build
+   java -jar spring-boot-dubbo-registry/target/spring-boot-dubbo-registry-1.0.0-SNAPSHOT.jar
+
 # run dubbo registry server
 zookeeper:
   docker-compose up -d
