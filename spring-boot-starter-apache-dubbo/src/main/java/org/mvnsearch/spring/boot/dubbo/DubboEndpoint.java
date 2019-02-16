@@ -21,7 +21,6 @@ import java.util.Set;
  *
  * @author linux_china
  */
-@Component
 @Endpoint(id = "dubbo")
 public class DubboEndpoint implements ApplicationContextAware {
     @Autowired

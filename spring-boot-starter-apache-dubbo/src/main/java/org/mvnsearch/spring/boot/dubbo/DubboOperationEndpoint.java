@@ -16,7 +16,7 @@ public class DubboOperationEndpoint {
 
     @RequestMapping("/offline")
     public String offline() {
-        DubboShutdownHook.getDubboShutdownHook().destroyAll();
+        DubboShutdownHook.getDubboShutdownHook().doDestroy();
         OFFLINE = true;
         return "success";
     }

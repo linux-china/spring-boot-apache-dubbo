@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
  *
  * @author linux_china
  */
-@Component
 public class DubboHealthIndicator extends AbstractHealthIndicator implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
