@@ -65,7 +65,7 @@ Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http
 ```properties
 restart.exclude.target-classes=/target/classes/
 ```
-关于hotspot的模式下，相关Java代码调整后理解生效，可以考虑： http://dcevm.github.io/
+关于HotSpot的模式下，相关Java代码调整后理解生效，可以考虑： http://dcevm.github.io/
 
 如果你的应用是纯Dubbo服务，没有涉及到Web页面，不建议你添加spring-devtools，如果添加了后，
 可以通过以下配置项关闭livereload服务，这样可以保证不必要的live reload服务启动。
@@ -73,15 +73,12 @@ restart.exclude.target-classes=/target/classes/
 spring.devtools.livereload.enabled=false
 ```
 
-# Kotlin support?
+# Kotlin support???
 
 ```
 dubbo<UserService>("0.0.0");
 dubbo<UserService>("127.0.0",20800,"0.0.0")
 ```
-# Todo
-
-* DubboConsumerBuilder: 快速构建Dubbo Consumer
 
 # References
 
