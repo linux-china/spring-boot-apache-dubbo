@@ -14,7 +14,7 @@ Apache Dubbo是Alibaba将Dubbo捐献给Apache的开源产品，详细介绍 http
 * Endpoint支持:  /actuator/dubbo， 输出Dubbo相关的配置
 
 # 注册中心-Registry
-目前主要是支持Simple Registry(Java),Redis、ZooKeeper和Consul这三个注册中心，主要是这两个服务非常普遍，同时由于Docker的流行，启动这三者个服务也非常简单。
+目前主要是支持Simple Registry(Java), Redis, ZooKeeper和Consul这三个注册中心，主要是这两个服务非常普遍，同时由于Docker的流行，启动这三者个服务也非常简单。
 
 ### Redis
 使用Redis注册中心，需要将在pom.xml中添加对应的redis客户端，代码如下：
@@ -82,7 +82,6 @@ dubbo<UserService>("127.0.0",20800,"0.0.0")
 # Todo
 
 * DubboConsumerBuilder: 快速构建Dubbo Consumer
-* zipkin: https://github.com/jessyZu/dubbo-zipkin-spring-starter
 
 # References
 
