@@ -10,3 +10,9 @@ services:
     - "2181:2181"
     - "2888:2888"
     - "3888:3888"
+#  dubbo-simple-registry:
+#    image: dubbo/simple-registry
+#    ports:
+#      - "20888:20888"
+#      - "9090:9090"
+  
