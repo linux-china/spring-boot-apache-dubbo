@@ -2,6 +2,10 @@
 build:
    mvn -DskipTests clean package
 
+# registry server docker build
+registry_jib: build
+   mvn -pl spring-boot-dubbo-registry jib:dockerBuild
+
 # run dubbo registry server
 zookeeper:
   docker-compose up -d
