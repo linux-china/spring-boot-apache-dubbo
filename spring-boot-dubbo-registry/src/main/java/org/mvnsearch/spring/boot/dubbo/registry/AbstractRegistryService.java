@@ -31,7 +31,9 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * AbstractRegistryService
+ * Abstract Registry Service
+ *
+ * @author linux_china
  */
 public abstract class AbstractRegistryService implements RegistryService {
     protected final Logger log = LoggerFactory.getLogger(getClass());

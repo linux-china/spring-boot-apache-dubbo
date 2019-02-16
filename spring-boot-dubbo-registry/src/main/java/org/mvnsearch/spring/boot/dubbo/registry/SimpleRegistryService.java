@@ -29,7 +29,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Simple Registry Service
+ * Simple Registry Service in memory
+ *
+ * @author linux_china
  */
 public class SimpleRegistryService extends AbstractRegistryService {
     /**
@@ -51,7 +53,7 @@ public class SimpleRegistryService extends AbstractRegistryService {
         String client = RpcContext.getContext().getRemoteAddressString();
         Map<String, URL> urls = remoteRegistered.get(client);
         if (urls == null) {
-            remoteRegistered.putIfAbsent(client, new ConcurrentHashMap<String, URL>());
+            remoteRegistered.putIfAbsent(client, new ConcurrentHashMap<>());
             urls = remoteRegistered.get(client);
         }
         urls.put(service, url);
@@ -94,7 +96,7 @@ public class SimpleRegistryService extends AbstractRegistryService {
 
         Map<String, NotifyListener> listeners = remoteListeners.get(client);
         if (listeners == null) {
-            remoteListeners.putIfAbsent(client, new ConcurrentHashMap<String, NotifyListener>());
+            remoteListeners.putIfAbsent(client, new ConcurrentHashMap<>());
             listeners = remoteListeners.get(client);
         }
         listeners.put(service, listener);
