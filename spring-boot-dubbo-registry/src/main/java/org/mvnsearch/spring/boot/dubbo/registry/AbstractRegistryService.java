@@ -21,6 +21,7 @@ import org.apache.dubbo.registry.NotifyListener;
 import org.apache.dubbo.registry.RegistryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -190,13 +191,13 @@ public abstract class AbstractRegistryService implements RegistryService {
         notified.put(service, urls);
         List<NotifyListener> listeners = notifyListeners.get(service);
         if (listeners != null) {
-            for (NotifyListener listener : listeners) {
+            Flux.fromIterable(listeners).subscribe(notifyListener -> {
                 try {
-                    notify(service, urls, listener);
+                    notify(service, urls, notifyListener);
                 } catch (Throwable t) {
                     log.error("Failed to notify registry event, service: " + service + ", urls: " + urls + ", cause: " + t.getMessage(), t);
                 }
-            }
+            });
         }
     }
 
