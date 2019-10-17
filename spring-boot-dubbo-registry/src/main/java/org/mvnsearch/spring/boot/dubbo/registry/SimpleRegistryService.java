@@ -104,8 +104,6 @@ public class SimpleRegistryService extends AbstractRegistryService {
         if (urls != null && urls.size() > 0) {
             listener.notify(urls);
         }
-
-
     }
 
     @Override
