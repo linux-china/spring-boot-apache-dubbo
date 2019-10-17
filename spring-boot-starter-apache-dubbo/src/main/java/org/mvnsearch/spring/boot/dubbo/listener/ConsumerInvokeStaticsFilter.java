@@ -2,7 +2,6 @@ package org.mvnsearch.spring.boot.dubbo.listener;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Metrics;
-import org.apache.dubbo.common.Constants;
 import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.*;
 
@@ -11,7 +10,7 @@ import org.apache.dubbo.rpc.*;
  *
  * @author linux_china
  */
-@Activate(group = Constants.CONSUMER, order = -110000)
+@Activate(group = "consumerInvokeStatics", order = -110000)
 public class ConsumerInvokeStaticsFilter implements Filter {
     private MeterRegistry metrics = Metrics.globalRegistry;
 
