@@ -14,7 +14,7 @@ public class DubboDirectCallTest {
 
     @Test
     public void sayHelloTest() {
-        UicTemplate uicTemplate = DubboDirectCallFactory.dubbo("127.0.0.1", 20800, UicTemplate.class);
+        UicTemplate uicTemplate = DubboDirectCallFactory.dubbo("127.0.0.1", 28888, UicTemplate.class);
         User user = uicTemplate.findById(1L);
         System.out.println(user.getNick());
     }
