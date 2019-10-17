@@ -17,10 +17,10 @@
 package org.mvnsearch.spring.boot.dubbo.registry;
 
 import org.apache.dubbo.common.URL;
-import org.apache.dubbo.common.logger.Logger;
-import org.apache.dubbo.common.logger.LoggerFactory;
 import org.apache.dubbo.registry.NotifyListener;
 import org.apache.dubbo.registry.RegistryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -168,7 +168,7 @@ public abstract class AbstractRegistryService implements RegistryService {
         }
         List<NotifyListener> listeners = notifyListeners.get(service);
         if (listeners == null) {
-            notifyListeners.putIfAbsent(service, new CopyOnWriteArrayList<NotifyListener>());
+            notifyListeners.putIfAbsent(service, new CopyOnWriteArrayList<>());
             listeners = notifyListeners.get(service);
         }
         if (listeners != null && !listeners.contains(listener)) {
