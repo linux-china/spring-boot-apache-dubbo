@@ -10,8 +10,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-        <dubbo.version>2.7.2</dubbo.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+        <dubbo.version>2.7.3</dubbo.version>
     </properties>
     <developers>
         <developer>
@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,7 +72,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -81,5 +81,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
