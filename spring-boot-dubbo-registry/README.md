@@ -1,7 +1,7 @@
 Dubbo Registry Server
 =====================
 
-Dubbo simple registry server in memory.
+Dubbo simple registry server in memory for embed.
 
 ### ports
 
@@ -17,3 +17,8 @@ Dubbo simple registry server in memory.
       - "20888:20888"
       - "9090:9090"
 ```
+
+### Features
+
+* Reactive notify after service providers changed
+* API friendly
