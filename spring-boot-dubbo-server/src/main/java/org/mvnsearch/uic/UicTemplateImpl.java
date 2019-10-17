@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * uic template implementation
@@ -20,6 +21,11 @@ public class UicTemplateImpl implements UicTemplate {
         user.setNick("nick:" + id);
         user.setCreatedAt(new Date());
         return user;
+    }
+
+    @Override
+    public CompletableFuture<User> findByIdFuture(Long id) {
+        return CompletableFuture.completedFuture(findById(id));
     }
 
     public Optional<Long> isEmailUnique(String email) {
