@@ -1,7 +1,6 @@
 package org.mvnsearch.uic;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * user class
@@ -9,15 +8,24 @@ import java.util.Date;
  * @author linux_china
  */
 public class User implements Serializable {
-    private Long id;
+    private Integer id;
     private String nick;
-    private Date createdAt;
+    private String email;
+    private String phone;
 
-    public Long getId() {
+    public User() {
+    }
+
+    public User(Integer id, String nick) {
+        this.id = id;
+        this.nick = nick;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -29,11 +37,19 @@ public class User implements Serializable {
         this.nick = nick;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
