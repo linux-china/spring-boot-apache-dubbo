@@ -10,9 +10,9 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface UicTemplate {
 
-    User findById(Long id);
+    User findById(Integer id);
 
-    CompletableFuture<User> findByIdFuture(Long id);
+    CompletableFuture<User> findByIdFuture(Integer id);
 
     Optional<Long> isEmailUnique(String email);
 }

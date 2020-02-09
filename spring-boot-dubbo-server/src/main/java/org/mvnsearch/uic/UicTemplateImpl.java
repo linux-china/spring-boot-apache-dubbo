@@ -3,7 +3,6 @@ package org.mvnsearch.uic;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -15,16 +14,15 @@ import java.util.concurrent.CompletableFuture;
 @Component
 @DubboService(interfaceClass = UicTemplate.class)
 public class UicTemplateImpl implements UicTemplate {
-    public User findById(Long id) {
+    public User findById(Integer id) {
         User user = new User();
         user.setId(id);
         user.setNick("nick:" + id);
-        user.setCreatedAt(new Date());
         return user;
     }
 
     @Override
-    public CompletableFuture<User> findByIdFuture(Long id) {
+    public CompletableFuture<User> findByIdFuture(Integer id) {
         return CompletableFuture.completedFuture(findById(id));
     }
 
