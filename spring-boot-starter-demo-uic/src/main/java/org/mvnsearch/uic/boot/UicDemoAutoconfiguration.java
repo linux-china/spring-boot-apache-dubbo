@@ -3,8 +3,8 @@ package org.mvnsearch.uic.boot;
 import org.apache.dubbo.config.spring.ReferenceBean;
 import org.mvnsearch.spring.boot.dubbo.DubboAutoConfiguration;
 import org.mvnsearch.spring.boot.dubbo.DubboBasedAutoConfiguration;
-import org.mvnsearch.uic.AccountManager;
 import org.mvnsearch.uic.UicTemplate;
+import org.mvnsearch.uic.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -29,8 +29,8 @@ public class UicDemoAutoconfiguration extends DubboBasedAutoConfiguration {
     }
 
     @Bean
-    public ReferenceBean<AccountManager> accountManager() {
-        return getConsumerBean(AccountManager.class, properties.getVersion(), properties.getTimeout());
+    public ReferenceBean<UserService> userService() {
+        return getConsumerBean(UserService.class, properties.getVersion(), properties.getTimeout());
     }
 
 }
