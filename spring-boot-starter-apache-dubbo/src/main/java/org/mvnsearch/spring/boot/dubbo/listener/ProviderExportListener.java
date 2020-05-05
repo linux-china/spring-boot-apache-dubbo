@@ -19,7 +19,7 @@ public class ProviderExportListener extends ExporterListenerAdapter {
     /**
      * exported interfaces
      */
-    public static Set<Class> exportedInterfaces = new HashSet<>();
+    public static Set<Class<?>> exportedInterfaces = new HashSet<>();
     /**
      * exported urls
      */

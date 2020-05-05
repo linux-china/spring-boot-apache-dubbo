@@ -76,6 +76,7 @@ public class DubboProviderAutoConfiguration implements ApplicationContextAware {
     public void publishDubboService(String beanName, Object bean) throws Exception {
         DubboService service = applicationContext.findAnnotationOnBean(beanName, DubboService.class);
         ServiceBean<Object> serviceConfig = new ServiceBean<>();
+        assert service != null;
         if (void.class.equals(service.interfaceClass())
                 && "".equals(service.interfaceName())) {
             if (bean.getClass().getInterfaces().length > 0) {

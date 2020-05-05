@@ -38,7 +38,7 @@ public class DubboEndpoint implements ApplicationContextAware {
         Map<String, Object> info = new HashMap<String, Object>();
         boolean serverMode = false;
         String[] beanNames = applicationContext.getBeanNamesForAnnotation(EnableDubboConfiguration.class);
-        if (beanNames != null && beanNames.length > 0) {
+        if (beanNames.length > 0) {
             serverMode = true;
         }
         if (serverMode) {
@@ -50,8 +50,8 @@ public class DubboEndpoint implements ApplicationContextAware {
         info.put("protocol", dubboProperties.getProtocol());
         //published services
         Map<String, Map<String, Double>> publishedInterfaceList = new HashMap<>();
-        Set<Class> publishedInterfaces = ProviderExportListener.exportedInterfaces;
-        for (Class clazz : publishedInterfaces) {
+        Set<Class<?>> publishedInterfaces = ProviderExportListener.exportedInterfaces;
+        for (Class<?> clazz : publishedInterfaces) {
             String interfaceClassCanonicalName = clazz.getCanonicalName();
             if (!interfaceClassCanonicalName.equals("void")) {
                 Map<String, Double> methodNames = new HashMap<>();
@@ -66,11 +66,11 @@ public class DubboEndpoint implements ApplicationContextAware {
             info.put("publishedInterfaces", publishedInterfaceList);
         }
         //subscribed services
-        Set<Class> subscribedInterfaces = ConsumerSubscribeListener.subscribedInterfaces;
+        Set<Class<?>> subscribedInterfaces = ConsumerSubscribeListener.subscribedInterfaces;
         if (!subscribedInterfaces.isEmpty()) {
             try {
                 Map<String, Map<String, Double>> subscribedInterfaceList = new HashMap<>();
-                for (Class clazz : subscribedInterfaces) {
+                for (Class<?> clazz : subscribedInterfaces) {
                     Map<String, Double> methodNames = new HashMap<>();
                     for (Method method : clazz.getMethods()) {
                         String key = clazz.getCanonicalName() + "." + method.getName();

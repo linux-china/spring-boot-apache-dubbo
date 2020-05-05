@@ -1,12 +1,14 @@
 package org.mvnsearch.spring.boot.dubbo.listener;
 
-import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.Invoker;
 import org.apache.dubbo.rpc.RpcException;
 import org.apache.dubbo.rpc.listener.InvokerListenerAdapter;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * dubbo client invoker listener
@@ -15,8 +17,8 @@ import java.util.*;
  */
 @Activate
 public class ConsumerSubscribeListener extends InvokerListenerAdapter {
-    public static Set<Class> subscribedInterfaces = new HashSet<>();
-    public static Map<String, Set<String>> connections = new HashMap<>();
+    public static final Set<Class<?>> subscribedInterfaces = new HashSet<>();
+    public static final Map<String, Set<String>> connections = new HashMap<>();
 
     @Override
     public void referred(Invoker<?> invoker) throws RpcException {

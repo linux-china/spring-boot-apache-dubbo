@@ -28,7 +28,7 @@ import java.util.Map;
 @Configuration
 @AutoConfigureAfter(DubboAutoConfiguration.class)
 public class DubboConsumerAutoConfiguration extends DubboBasedAutoConfiguration implements ApplicationContextAware {
-    private Map<String, Object> dubboReferences = new HashMap<>();
+    private final Map<String, Object> dubboReferences = new HashMap<>();
     private ApplicationContext applicationContext;
     @Autowired
     private ApplicationConfig applicationConfig;

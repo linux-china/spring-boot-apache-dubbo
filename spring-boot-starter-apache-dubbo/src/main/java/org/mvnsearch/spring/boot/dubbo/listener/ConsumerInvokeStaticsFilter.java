@@ -12,7 +12,7 @@ import org.apache.dubbo.rpc.*;
  */
 @Activate(group = "consumerInvokeStatics", order = -110000)
 public class ConsumerInvokeStaticsFilter implements Filter {
-    private MeterRegistry metrics = Metrics.globalRegistry;
+    private final MeterRegistry metrics = Metrics.globalRegistry;
 
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String key = invoker.getInterface().getCanonicalName() + "." + invocation.getMethodName();

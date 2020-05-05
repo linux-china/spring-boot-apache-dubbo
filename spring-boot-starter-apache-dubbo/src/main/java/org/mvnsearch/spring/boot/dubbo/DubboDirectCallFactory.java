@@ -12,11 +12,11 @@ import java.util.Map;
  * @author linux_china
  */
 public class DubboDirectCallFactory {
-    private static ApplicationConfig application = new ApplicationConfig("DubboConsumerTest");
+    private final static ApplicationConfig application = new ApplicationConfig("DubboConsumerTest");
     /**
      * dubbo service stubs
      */
-    private static Map<String, Object> stubs = new HashMap<>();
+    private final static Map<String, Object> stubs = new HashMap<>();
 
     /**
      * 返回直连dubbo服务

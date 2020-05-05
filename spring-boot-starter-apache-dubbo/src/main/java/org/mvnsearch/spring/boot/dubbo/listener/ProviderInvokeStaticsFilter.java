@@ -13,7 +13,7 @@ import org.apache.dubbo.rpc.*;
  */
 @Activate(group = "providerInvokeStatics")
 public class ProviderInvokeStaticsFilter implements Filter {
-    private MeterRegistry metrics = Metrics.globalRegistry;
+    private final MeterRegistry metrics = Metrics.globalRegistry;
 
     @SuppressWarnings("Duplicates")
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
