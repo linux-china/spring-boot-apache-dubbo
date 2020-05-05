@@ -8,7 +8,7 @@ import org.apache.dubbo.config.spring.ReferenceBean;
  * @author linux_china
  */
 public class DubboConsumerBuilder {
-    private Class interfaceClazz;
+    private Class<?> interfaceClazz;
     private String version;
     private Integer timeout;
 
@@ -16,7 +16,7 @@ public class DubboConsumerBuilder {
         return new DubboConsumerBuilder();
     }
 
-    public DubboConsumerBuilder service(Class interfaceClazz) {
+    public DubboConsumerBuilder service(Class<?> interfaceClazz) {
         this.interfaceClazz = interfaceClazz;
         return this;
     }
@@ -31,8 +31,8 @@ public class DubboConsumerBuilder {
         return this;
     }
 
-    public ReferenceBean build() {
-        ReferenceBean consumerBean = new ReferenceBean();
+    public ReferenceBean<?> build() {
+        ReferenceBean<?> consumerBean = new ReferenceBean<>();
         String canonicalName = interfaceClazz.getCanonicalName();
         consumerBean.setInterface(canonicalName);
         consumerBean.setId(canonicalName);
