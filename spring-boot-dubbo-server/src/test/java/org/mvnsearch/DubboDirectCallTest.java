@@ -1,6 +1,6 @@
 package org.mvnsearch;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mvnsearch.spring.boot.dubbo.DubboDirectCallFactory;
 import org.mvnsearch.uic.UicTemplate;
 import org.mvnsearch.uic.User;
