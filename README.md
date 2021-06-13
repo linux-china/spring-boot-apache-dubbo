@@ -82,4 +82,5 @@ dubbo<UserService>("127.0.0",20800,"0.0.0")
 
 # References
 
+* Dubbo异步调用: https://dubbo.apache.org/zh/docs/v2.7/user/examples/async-call/
 * Hessian Chinese: https://github.com/cytle/blog/blob/master/source/_posts/Hessian-2-0%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83.md
