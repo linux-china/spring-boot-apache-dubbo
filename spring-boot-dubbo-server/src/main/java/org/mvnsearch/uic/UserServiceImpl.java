@@ -1,6 +1,6 @@
 package org.mvnsearch.uic;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService {
     private Faker faker = new Faker();
 
     public User findById(Integer id) {
+        System.out.println("service called");
         User user = new User();
         user.setId(id);
         user.setNick(faker.name().name());
