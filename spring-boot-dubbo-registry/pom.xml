@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>2.7.5</spring-boot.version>
-        <dubbo.version>2.7.18</dubbo.version>
+        <dubbo.version>2.7.21</dubbo.version>
     </properties>
 
     <developers>
